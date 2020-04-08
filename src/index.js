@@ -1,17 +1,43 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDom from "react-dom";
+import "./index.css";
+//ES6, Nested Components and React Tools
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+function Books() {
+  return (
+    <section className="books">
+      <Book />
+      <Book />
+      <Book />
+      <Book />
+      <Book />
+    </section>
+  );
+}
+const Book = () => {
+  return (
+    <article className="book">
+      <CoverImage />
+      <Title />
+      <Author />
+    </article>
+  );
+};
+const CoverImage = () => (
+  <img
+    width="200"
+    src="https://images-na.ssl-images-amazon.com/images/I/71N4oeWwYlL._AC_UL200_SR200,200_.jpg"
+    alt="wonkey donkey"
+  />
 );
+const Title = () => (
+  <h1 style={{ fontSize: "2rem", color: "red" }}>The Wonkey Donkey</h1>
+);
+const authorStyle = {
+  letterSpacing: "10px",
+  color: "green",
+};
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+const Author = () => <p style={authorStyle}>by Craig Smith</p>;
+
+ReactDom.render(<Books />, document.getElementById("root"));
